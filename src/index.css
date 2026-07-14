@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    background: #0B0C10;
+}
+
+/* Делаем фон самого Leaflet-облака прозрачным, чтобы работал наш Tailwind */
+.custom-popup .leaflet-popup-content-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+/* Красим или скрываем маленькую стрелочку под поп-апом */
+.custom-popup .leaflet-popup-tip {
+  background: #1C1C1E !important;
+  border: 1px solid rgb(30, 41, 59, 0.8) !important; /* Наша рамка slate-800 */
+}
+.custom-popup .leaflet-popup-content a {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+/* На всякий случай заставляем весь текст внутри слушаться наших цветов */
+.custom-popup .leaflet-popup-content {
+  color: inherit !important;
+  margin: 0 !important; /* Убирает дефолтные отступы Leaflet вокруг твоего div */
+}
