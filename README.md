@@ -1,16 +1,63 @@
-# React + Vite
+ Skate Spots — Минск
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Интерактивная карта скейт-спотов Минска: список локаций, фильтры по покрытию и элементам, погода в реальном времени и отметки "я тут" от катающихся.
 
-Currently, two official plugins are available:
+Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
+📍 Интерактивная карта спотов на базе Leaflet с кастомными маркерами и попапами
+🔍 Поиск и фильтрация спотов по названию, крытости и наличию элементов (ступени, грани, перила)
+🌦️ Погода в реальном времени для Минска (Open-Meteo API) — влияет на рекомендацию крытых спотов
+🖼️ Галерея фото и видео по каждому споту (Swiper)
+✅ Check-in "Я тут" — отметка присутствия на споте
+📱 Адаптивный дизайн, PWA-заготовка
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+Стек
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+Frontend: React 18 + TypeScript, Vite
+Стили: Tailwind CSS
+Карта: Leaflet, react-leaflet
+Роутинг: React Router (HashRouter)
+Слайдер: Swiper
+Погода: Open-Meteo API
+
+
+Установка и запуск
+
+bashgit clone https://github.com/serafim-sb/minsk-street.git
+cd minsk-street
+npm install
+npm run dev
+
+Проверка типов без сборки:
+
+bashnpx tsc --noEmit
+
+Структура проекта
+
+src/
+├── components/
+│   ├── Header.tsx        # Шапка: логотип, поиск, навигация
+│   ├── FilterModal.tsx   # Модалка фильтров по элементам спота
+│   ├── BtnFiltr.tsx      # Переключатель "Все / Крытые"
+│   ├── SpotCard.tsx      # Карточка спота в списке
+│   ├── SpotDetails.tsx   # Детальная страница спота
+│   ├── SpotsMap.tsx      # Интерактивная карта
+│   └── WeatherCard.tsx   # Виджет погоды
+├── spotsData.ts          # Данные спотов + основные типы (Spot, Feature, MediaItem)
+├── App.tsx               # Корневой компонент, состояние приложения
+└── main.tsx               # Точка входа
+
+Roadmap
+
+
+ Backend для хранения спотов и check-in'ов (сейчас данные статичны)
+ Общий (не локальный) счётчик "сейчас катаются"
+ Доработка PWA / offline-кеша
+
+
+Статус
+
+Проект в разработке, используется как учебный и портфолио-проект.
